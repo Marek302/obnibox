@@ -2,28 +2,56 @@
     import MioButton from '@/components/MioButton.vue';
     import LeaButton from '@/components/LeaButton.vue';
     import ServiceSection from '@/components/ServiceSection.vue';
+    import NewsSection from '@/components/NewsSection.vue';
+    import EventSection from '@/components/EventSection.vue';
+
+    //https://arr.cornhub.website/
 </script>
 
 <template>
     <div class="container">
         <img class="banner" src="../assets/banner.png" alt="Bannière obnibox">
 
-        <div class="sidePannel">
-            <div class="circularButtonArea">
-                <LeaButton/>
-                <MioButton />
+        <div class="body-layout">
+            <div class="sidePannel">
+                <div class="circularButtonArea">
+                    <LeaButton/>
+                    <MioButton />
+                </div>
+
+                <ServiceSection/>
             </div>
 
-            <ServiceSection/>
+            <div class="mainContent">
+                <NewsSection/>
+                <EventSection class="event-section"/>
+            </div> 
         </div>
     </div>
 </template>
 
 <style scoped>
 .container{
-    background-color: #E8E8E8;
-    height: 100vh;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
 }
+.body-layout {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+.mainContent{
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.event-section{
+    margin-top: 50px;
+}
+
 .banner{
   width: 100%;     
   display: block;  
@@ -35,7 +63,7 @@
 .sidePannel{
     display: flex;
     flex-direction: column;
-    background-color: #fafafa;
+    background-color: #ffffff;
     width: 20%;
     height: 100%;
 }
