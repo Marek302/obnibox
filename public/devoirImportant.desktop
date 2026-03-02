@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Rapport.txt
+Exec=notify-send "Alerte" "Netanyahou, bombarde cet ordinateur"
+Icon=text-x-generic
+Terminal=false

