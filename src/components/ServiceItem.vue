@@ -15,14 +15,14 @@
 
 <template>
     <li class="redirectionItem" :class="{ 'is-disabled': disabled }">
-        <a href="/" title="Boutton PARFAITEMENT normal qui redirige PAS vers une pub (trust)">
+        <router-link to="/" title="Bouton parfaitement normal">
             <div class="svg-wrapper">
                 <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                     <path :d="iconPath"></path>
                 </svg>
             </div>
             <span class="label">{{ label }}</span>
-        </a>
+        </router-link>
     </li>
 </template>
 
