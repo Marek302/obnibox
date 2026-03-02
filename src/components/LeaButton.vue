@@ -4,11 +4,10 @@
   const router = useRouter();
 
   const goToLea = () => {
+    router.push('/lea'); 
     setTimeout(() => {
       window.open('https://www.temu.com/', '_blank');
     }, 100);
-
-    router.push('/lea'); 
   };
 </script>
 
