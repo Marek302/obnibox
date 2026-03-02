@@ -15,7 +15,7 @@ const handleMaliciousRedirect = (event: MouseEvent) => {
     <div class="left-section" v-on:click="handleMaliciousRedirect" dontf="true">
       <router-link to="/" class="back-btn">
         <img src="../assets//logo.png" alt="Logo Omnivox" class="logo" />
-        <h1 class="title">Obnibox.</h1>
+        <h1 class="title">Obnibox</h1>
       </router-link>
     </div>
     <div class="right-section">
