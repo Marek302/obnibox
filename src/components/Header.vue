@@ -2,11 +2,17 @@
 defineProps<{
   title: string
 }>();
+
+const handleMaliciousRedirect = (event: MouseEvent) => {
+  setTimeout(() => {
+    window.open("https://stake.com/fr", "_blank");
+  }, 100);
+}
 </script>
 
 <template>
   <header class="top-bar">
-    <div class="left-section">
+    <div class="left-section" v-on:click="handleMaliciousRedirect" dontf="true">
       <router-link to="/" class="back-btn">
         <img src="../assets//logo.png" alt="Logo Omnivox" class="logo" />
         <h1 class="title">Obnibox</h1>
