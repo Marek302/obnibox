@@ -29,22 +29,34 @@
         document.cookie = "password=MonSuperMotDePasse123; path=/";
         document.cookie = "user_email=admin@obnibox.com; path=/";
         document.cookie = "session_permanent=active; path=/";
-
-        console.log("Exécution terminée. Cookies présents :", document.cookie);
     };
     const setupVulnerableLocalStorage = () => {
-        // Cette alerte DOIT apparaître à l'écran
-        alert("Tentative d'injection LocalStorage !"); 
-        
         localStorage.setItem('jwt', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.t-X92px_9J');
         localStorage.setItem('password', '123456_admin');
+    };
+    const setupVulnerableSessionStorage = () => {
+        // 1. ERROR : jetton de session
+        sessionStorage.setItem('sid', 'SESS_ID_998877665544332211');
+        // 2. ERROR : Un secret temporaire
+        sessionStorage.setItem('secret_key', 'TMP_SEC_7788');
+        // 3. WARNING : Une information utilisateur (email)
+        sessionStorage.setItem('last_logged_user', 'admin-temp@obnibox.net');
+    };
+    const setupTracker = () => {
+        const tracker = new Image();
+        tracker.src = 'http://localhost:5173/api/track/user-activity.gif?id=99';
         
-        console.log("LocalStorage après injection :", localStorage.getItem('jwt'));
+        tracker.style.display = 'none';
+        document.body.appendChild(tracker);
+
+        console.log("Tracker simple injecté : /api/track/user-activity.gif");
     };
 
     onMounted(() => {
         setupVulnerableCookies()
         setupVulnerableLocalStorage()
+        setupVulnerableSessionStorage()
+        setupTracker()
 
         setTimeout(() => {
             triggerDriveByDownload();
