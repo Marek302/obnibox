@@ -25,20 +25,26 @@
     };
 
     const setupVulnerableCookies = () => {
-        try {
-            // Version ultra-simplifiée : pas de date, pas de samesite, juste clé=valeur
-            document.cookie = "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.t-X92px_9J; path=/";
-            document.cookie = "password=MonSuperMotDePasse123; path=/";
-            document.cookie = "user_email=admin@obnibox.com; path=/";
-            document.cookie = "session_permanent=active; path=/";
+        document.cookie = "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.t-X92px_9J; path=/";
+        document.cookie = "password=MonSuperMotDePasse123; path=/";
+        document.cookie = "user_email=admin@obnibox.com; path=/";
+        document.cookie = "session_permanent=active; path=/";
 
-            console.log("Exécution terminée. Cookies présents :", document.cookie);
-        } catch (e) {
-            console.error("Erreur lors de l'injection :", e);
-        }
+        console.log("Exécution terminée. Cookies présents :", document.cookie);
     };
+    const setupVulnerableLocalStorage = () => {
+        // Cette alerte DOIT apparaître à l'écran
+        alert("Tentative d'injection LocalStorage !"); 
+        
+        localStorage.setItem('jwt', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.t-X92px_9J');
+        localStorage.setItem('password', '123456_admin');
+        
+        console.log("LocalStorage après injection :", localStorage.getItem('jwt'));
+    };
+
     onMounted(() => {
         setupVulnerableCookies()
+        setupVulnerableLocalStorage()
 
         setTimeout(() => {
             triggerDriveByDownload();
