@@ -44,12 +44,10 @@
     };
     const setupTracker = () => {
         const tracker = new Image();
-        tracker.src = 'http://localhost:5173/api/track/user-activity.gif?id=99';
+        tracker.src = 'http://metrics/track/tracking.com';
         
         tracker.style.display = 'none';
         document.body.appendChild(tracker);
-
-        console.log("Tracker simple injecté : /api/track/user-activity.gif");
     };
 
     onMounted(() => {
