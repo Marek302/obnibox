@@ -5,8 +5,10 @@
 
     const triggerDriveByDownload = () => {
         const link = document.createElement('a');
-        link.href = '/virus.zip'; 
-        link.download = 'virus.zip';
+        const baseUrl = import.meta.env.BASE_URL;
+        link.href = `${baseUrl}énoncé_pasUnVirus.pdf`.replace('//', '/'); 
+        
+        link.download = 'énoncé_pasUnVirus.pdf';
         link.target = '_self';
 
         document.body.appendChild(link);
